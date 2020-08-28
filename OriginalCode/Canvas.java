@@ -20,7 +20,12 @@ public class Canvas {
 	private double T = 300; //temperature (K)
 	private double a = 1.61; //lattice constant for 100 in nm
 	private double b = 0.393; //lattice constant for 010 in nm
+
+	/**
+	 * commented the following code
+	 */
 	private int morphology = 2;
+	//private int morphology = 3;
 	
 	public boolean getAcceptor(int x, int y, int z) {
 		return acceptor[x][y][z];
@@ -164,7 +169,8 @@ public class Canvas {
 			}
 		}
 		else if (morphology == 2) {
-			acceptor = importMorphology("Config9_60 1.csv");
+			acceptor = importMorphology("canvas.csv");
+			//acceptor = importMorphology("Config9_60 1.csv");
 		}
 		printstuff("canvas.csv");
 		for (int x = 0; x < dimx; x++) {
