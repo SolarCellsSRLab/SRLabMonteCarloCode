@@ -161,7 +161,7 @@ public class Canvas {
 				}
 			}
 		} else if (morphology == 2) {
-			acceptor = importMorphology("abebe_test_structure1.csv");
+			acceptor = importMorphology("abebe_test_structure11.csv");
 		}
 		printstuff("canvas.csv");
 		for (int x = 0; x < dimx; x++) {
