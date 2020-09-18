@@ -15,21 +15,35 @@ disp(' ')
 nf = 15;     % Number of simulations done for device at different wavelengths  (files)
 
 %file1(1,:) = 'p3ht_outputa_100000over.csv';
-file1(1,:) = 'output1.csv';
-file2(2,:) = 'p3ht_outputb_100000over.csv';
-file3(3,:) = 'p3ht_outputc_100000over.csv';
-file4(4,:) = 'p3ht_outputd_100000over.csv';
-file5(5,:) = 'p3ht_outpute_100000over.csv';
-file6(6,:) = 'p3ht_outputf_100000over.csv';
-file7(7,:) = 'p3ht_outputg_100000over.csv';
-file8(8,:) = 'p3ht_outputh_100000over.csv';
-file9(9,:) = 'p3ht_outputi_100000over.csv';
-file10(10,:) = 'p3ht_outputj_100000over.csv';
-file11(11,:) = 'p3ht_outputk_100000over.csv';
-file12(12,:) = 'p3ht_outputl_100000over.csv';
-file13(13,:) = 'p3ht_outputm_100000over.csv';
-file14(14,:) = 'p3ht_outputn_100000over.csv';
-file15(15,:) = 'p3ht_outputo_100000over.csv';
+file1(1,:) = 'mc_1.csv';
+file2(2,:) = 'mc_2.csv';
+file3(3,:) = 'mc_3.csv';
+file4(4,:) = 'mc_4.csv';
+file5(5,:) = 'mc_5.csv';
+file6(6,:) = 'mc_6.csv';
+file7(7,:) = 'mc_7.csv';
+file8(8,:) = 'mc_8.csv';
+file9(9,:) = 'mc_9.csv';
+file10(10,:) = 'mc_10.csv';
+file11(11,:) = 'mc_11.csv';
+file12(12,:) = 'mc_12.csv';
+file13(13,:) = 'mc_13.csv';
+file14(14,:) = 'mc_14.csv';
+file15(15,:) = 'mc_14.csv';
+% file2(2,:) = 'p3ht_outputb_100000over.csv';
+% file3(3,:) = 'p3ht_outputc_100000over.csv';
+% file4(4,:) = 'p3ht_outputd_100000over.csv';
+% file5(5,:) = 'p3ht_outpute_100000over.csv';
+% file6(6,:) = 'p3ht_outputf_100000over.csv';
+% file7(7,:) = 'p3ht_outputg_100000over.csv';
+% file8(8,:) = 'p3ht_outputh_100000over.csv';
+% file9(9,:) = 'p3ht_outputi_100000over.csv';
+% file10(10,:) = 'p3ht_outputj_100000over.csv';
+% file11(11,:) = 'p3ht_outputk_100000over.csv';
+% file12(12,:) = 'p3ht_outputl_100000over.csv';
+% file13(13,:) = 'p3ht_outputm_100000over.csv';
+% file14(14,:) = 'p3ht_outputn_100000over.csv';
+% file15(15,:) = 'p3ht_outputo_100000over.csv';
 
 % Read in the DMC data files.
 DMCa_data = csvread(file1(1,:),2,0);
@@ -254,7 +268,7 @@ xlabel('Wavelength (nm)','FontSize',fs)
 set(get(AX(1),'Ylabel'),'String','Carrier Collection Efficiency','FontSize',fs) 
 set(get(AX(2),'Ylabel'),'String','Carrier Disociation Efficiency','FontSize',fs)
 set(AX(1),'xlim',[300 650],'ylim',[0 0.15],'Fontsize',fs)
-set(AX(2),'xlim',[300 650],'ylim',[0 0.15],'Fontsize',fs,'linestyle',':')
+set(AX(2),'xlim',[300 650],'ylim',[0 0.15],'Fontsize',fs)
 set(AX(1),'Fontsize',16)
 set(AX(2),'Fontsize',16)
 set(H1,'LineWidth',lw)
