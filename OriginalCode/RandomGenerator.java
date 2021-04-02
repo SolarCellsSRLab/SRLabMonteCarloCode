@@ -1,9 +1,9 @@
 import java.util.*;
 
 public class RandomGenerator {
-	
+
 	private static Random rand;
-	
+
 	public static void initRand() {
 		rand = new Random(0);
 	}
@@ -11,19 +11,18 @@ public class RandomGenerator {
 	public static double randDouble() {
 		return rand.nextDouble();
 	}
-	
+
 	public static int randInt() {
 		rand = new Random();
 		return rand.nextInt(100);
 	}
 
-	public static int randIndex(int size){
+	public static int randIndex(int size) {
 		return rand.nextInt(size);
 	}
 
-	public static boolean coinFlip(double p)
-	{
-		if(rand.nextDouble() < p)
+	public static boolean coinFlip(double p) {
+		if (rand.nextDouble() < p)
 			return true;
 		return false;
 	}
@@ -38,14 +37,27 @@ public class RandomGenerator {
 		} else {
 			double v1, v2, s;
 			do {
-				v1 = 2 * rand.nextDouble() - 1;   // between -1.0 and 1.0
-				v2 = 2 * rand.nextDouble() - 1;   // between -1.0 and 1.0
+				v1 = 2 * rand.nextDouble() - 1; // between -1.0 and 1.0
+				v2 = 2 * rand.nextDouble() - 1; // between -1.0 and 1.0
 				s = v1 * v1 + v2 * v2;
 			} while (s >= 1 || s == 0);
-			double multiplier = StrictMath.sqrt(-2*variance * StrictMath.log(s)/s);
+			double multiplier = StrictMath.sqrt(-2 * variance * StrictMath.log(s) / s);
 			nextNextGaussian = v2 * multiplier;
 			haveNextNextGaussian = true;
 			return v1 * multiplier;
 		}
+	}
+
+	public static void main(String args[]) {
+		RandomGenerator randomGenerator = new RandomGenerator();
+		RandomGenerator.initRand();
+
+		System.out.println(RandomGenerator.randDouble());
+		System.out.println(RandomGenerator.randInt());
+		System.out.println(RandomGenerator.randIndex(100));
+
+		System.out.println(RandomGenerator.coinFlip(0.5));
+		System.out.println(randomGenerator.nextGaussian(0.5));
+
 	}
 }
