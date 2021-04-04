@@ -25,6 +25,7 @@ public class Canvas {
 	 * commented the following code
 	 */
 	private int morphology = 2;
+	private String fileWithFifthColumn; // file file path
 
 	public boolean getAcceptor(int x, int y, int z) {
 		return acceptor[x][y][z];
@@ -46,7 +47,8 @@ public class Canvas {
 		return genrate[x][y][z];
 	}
 
-	public Canvas(int xdim, int ydim, int zdim) throws IOException {
+	public Canvas(int xdim, int ydim, int zdim, String filePath) throws IOException {
+		this.fileWithFifthColumn=filePath;
 		initVar(xdim, ydim, zdim);
 		acceptorproperties = new double[14];
 		acceptorproperties[0] = 1.25; // exciton lifetime in ns
@@ -161,7 +163,7 @@ public class Canvas {
 				}
 			}
 		} else if (morphology == 2) {
-			acceptor = importMorphology("abebe_test_structure1.csv");
+			acceptor = importMorphology(this.fileWithFifthColumn);
 		}
 		printstuff("canvas.csv");
 		for (int x = 0; x < dimx; x++) {
@@ -208,10 +210,10 @@ public class Canvas {
 		while (scanner.hasNextLine()) {
 			String line = scanner.nextLine();
 			String[] temp = line.split(",");
-			int x = Integer.parseInt(temp[0]);
-			int y = Integer.parseInt(temp[1]);
-			int z = Integer.parseInt(temp[2]);
-			int spin = Integer.parseInt(temp[3]);
+			int x = (int)Double.parseDouble(temp[0]);
+			int y = (int)Double.parseDouble(temp[1]);
+			int z = (int)Double.parseDouble(temp[2]);
+			int spin = (int)Double.parseDouble(temp[3]);
 			if (spin == 1) {
 				canvas[x][y][z] = true;
 			} else {

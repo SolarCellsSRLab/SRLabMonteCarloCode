@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+import java.util.stream.IntStream;
 
 public class MonteCarloDriver {
     private final int xdim = 100;
@@ -11,6 +12,7 @@ public class MonteCarloDriver {
 
     private Canvas canvas;
     private ExcitonGenerator ExciGenerator;
+    private String csvFilePath; // csv file with 5  columns
     private double Time;
     private int CCEvent;
     private int holesCollected; // number of holes collected
@@ -22,7 +24,8 @@ public class MonteCarloDriver {
     private CalcEfficiency Efficiency;
     private double excirate;
 
-    public MonteCarloDriver() throws IOException {
+    public MonteCarloDriver(String csvFilePath) throws IOException {
+        this.csvFilePath=csvFilePath;
         CCEvent = 0;
         Time = 0;
         holesCollected = 0;
@@ -35,7 +38,7 @@ public class MonteCarloDriver {
         Particle.genDistances();
         Particle.setCanvasSize(xdim, ydim, zdim);
         RandomGenerator.initRand();
-        canvas = new Canvas(xdim, ydim, zdim);
+        canvas = new Canvas(xdim, ydim, zdim,this.csvFilePath);
         ExciGenerator = new ExcitonGenerator();
         Efficiency = new CalcEfficiency();
         excirate = ExciGenerator.getExcitonRate();
@@ -267,6 +270,22 @@ public class MonteCarloDriver {
         for (Event x : eventtemp) {
             eventQueue.add(x);
         }
+
+//        IntStream.range(0, xdim).parallel().forEach(x ->
+//        IntStream.range(0, ydim).parallel()
+//                .forEach(y -> (IntStream.range(0, zdim))
+//                        .forEach(z -> {
+//                            if (particles[x][y][z] != null) { // Contains a particle
+//                                String type = particles[x][y][z].type;
+//                                if (type.compareTo("Exciton") == 0) {
+//                                    Exciton temp = (Exciton) particles[x][y][z];
+//                                    temp.updateLifetime(time);
+//                                    particles[x][y][z] = temp;
+//                                }
+//                            }
+//                        })));
+
+
         for (int x = 0; x < xdim; x++) {
             for (int y = 0; y < ydim; y++) {
                 for (int z = 0; z < zdim; z++) {
@@ -281,6 +300,8 @@ public class MonteCarloDriver {
                 }
             }
         }
+
+
     }
 
     private ArrayList<int[]> getNeighbours(int x, int y, int z) {
